@@ -1,0 +1,40 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "RunOS",
+            "type": "shell",
+            "options": {
+                "statusbar": {
+                    "label": "BuildOS",
+                    "tooltip": "BuildOS",
+                    "Color": "#7ed61a",
+                    "backgroundColor": "statusBarItem.warningBackground"
+                }
+            },
+            "command": "./build",
+            "args": [
+                "-r"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "BuildOS",
+            "type": "shell",
+            "command": "./build",
+            "args": [
+                "-b"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
