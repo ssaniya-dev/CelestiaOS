@@ -22,7 +22,6 @@ bool TransmissionControlProtocolHandler::HandleTransmissionControlProtocolMessag
     if (size > 9 && data[0] == 'G' && data[1] == 'E' && data[2] == 'T' && data[3] == ' ' && data[4] == '/' && data[5] == ' ' && data[6] == 'H' && data[7] == 'T' && data[8] == 'T' && data[9] == 'P')
     {
         printf("SYSMSG: Sending response\n");
-        socket->Send((uint8_t *)"HTTP/1.1 200 OK\r\nServer: SectorOS\r\nContent-Type: text/html\r\n\r\n<html><head><title>SectorOS</title></head><body><b>This is a test webpage which is hosted on SectorOS</b> https://github.com/Arun007coder/SectorOS</body></html>\r\n", 224);
         socket->Disconnect();
     }
     return true;

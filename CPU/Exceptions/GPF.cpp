@@ -33,7 +33,6 @@ uint32_t EXCEPTIONS_GPF::HandleInterrupt(uint32_t esp)
     CPUState* CSTATE = (CPUState*)esp;
     printf("\5");
     printf("A Kernel Panic Occured. HALTING...                 \nSYSMSG_EXCEPTION:  General Protection Fault\n\n");
-    printf("An GPF exception has occured in the system during execution which cannot fix itself.The general protection fault is called when a function is improperly executed which leads to memory corruption. Restarting may solve the problem. If this happens again, Report it on github.com/Arun007coder/SectorOS/issues \n\n");
     printf("Extended stack pointer = 0x");
     printHex32(esp);
     printf("\nExtended instruction pointer  = 0x");

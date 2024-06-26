@@ -31,7 +31,6 @@ uint32_t EXCEPTIONS_IOC::HandleInterrupt(uint32_t esp)
     CPUState* CSTATE = (CPUState*)esp;
     printf("\5");
     printf("A Kernel Panic Occured. HALTING...                 \nSYSMSG_EXCEPTION:  INVALID OPCODE\n\n");
-    printf("This is an invalid opcode exception which is caused by an invalid opcode or an instruction with invalid prefixes. Restarting may solve the problem. If this happens again, Report it on github.com/Arun007coder/SectorOS/issues \n\n");
     printf("Extended stack pointer = 0x");
     printHex32(esp);
     printf("\nExtended instruction pointer  = 0x");

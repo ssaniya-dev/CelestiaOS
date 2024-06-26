@@ -302,8 +302,7 @@ void KeyboardDriver::clear_key_buffer()
 	}
 }
 
-// TODO: Move the Command Interpreter to a new class
-void KeyboardDriver::CommandInterpreter() // SOSH v1.0.3 [SectorOS SHell]. 11 Commands 
+void KeyboardDriver::CommandInterpreter() 
 {
 	if (!IsShellDisabled)
 	{
@@ -359,13 +358,8 @@ void KeyboardDriver::CommandInterpreter() // SOSH v1.0.3 [SectorOS SHell]. 11 Co
 		else if (key_buffer[0] == "c" & key_buffer[1] == "l" & key_buffer[2] == "e" & key_buffer[3] == "a" & key_buffer[4] == "r")
 		{
 			COMNAME = "clear";
-			printf("\5");
-				
-			printf("SectorOS ");
 			printf(KERNEL_VERSION);
-			printf("               ");
 			PrintDate();
-			printf("                            Type: Shell ");
 			canNewLine = false;
 		}
 		else if (key_buffer[0] == "s" & key_buffer[1] == "d")
@@ -438,7 +432,6 @@ void KeyboardDriver::CommandInterpreter() // SOSH v1.0.3 [SectorOS SHell]. 11 Co
 			
 			RTC rtclock;
 			rtclock.read_rtc();
-			printf("welcome to SectorOS text mode ");PrintDate(); printf("                             Type: Text ");printf("This is experimental. you cannot save the documents . To return to CLI press LCTRL+C");
 			isTxtMode = true;
 			serialport.logToSerialPort("\ntxt mode initialised");
 		}
@@ -493,14 +486,6 @@ void KeyboardDriver::CommandInterpreter() // SOSH v1.0.3 [SectorOS SHell]. 11 Co
 				printf("\n");
 				printf("Memory on system: 0x");
 				printHex32((*memupper) * 1024);
-			}
-			else if (key_buffer[8] == "-" && key_buffer[9] == "K")
-			{
-				printf("SectorOS Kernel "); printf(KERNEL_VERSION); printf(" "); printf(KERNEL_BUILD);
-			}
-			else
-			{
-				printf("SectorOS Kernel "); printf(KERNEL_VERSION); printf(" "); printf(KERNEL_BUILD);
 			}
 		}
 		else if (key_buffer[0] == "v" && key_buffer[1] == "g" && key_buffer[2] == "a")
@@ -667,15 +652,9 @@ void KeyboardDriver::returnHScreen()
 {
 	clear_key_buffer();
 	printf("\5");
-	//ColourPrint(1);
-	//ColourPrint(0);
-	//printf("Welcome to SectorOS Monolithic kernel                               Type: Shell\nhttps://github.com/Arun007coder/SectorOS \n");
-
-	printf("SectorOS ");
+	printf("Ce ");
 	printf(KERNEL_VERSION);
 	printf("               ");
-	PrintDate();
-	printf("                          Type: Shell\nhttps://github.com/Arun007coder/SectorOS \n");
 	printf("Run help to get the list of commands which is implemented \n \n");
 
 	PrintPrompt();

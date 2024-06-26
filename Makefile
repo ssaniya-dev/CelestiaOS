@@ -65,16 +65,16 @@ CPU/PowerControl.o: CPU/PowerControl.cpp CPU/shutdown.o
 	@printf "\e[1;32m[1/3]Compiling $<\n\e[0m"
 	$(ASM) $(ASMFLAGS) -o $@ $<
 
-SectorOS_Kernel.bin: LILO/linker.ld $(objects)
+CelestiaOS_Kernel.bin: LILO/linker.ld $(objects)
 	@printf "\e[1;33m[2/3]Linking object files\n\e[0m"
 	@$(LD) $(LDFLAGS) -T $< -o $@ $(objects)
 	@printf "Linking $(objects) to make $@\n"
 	@printf "Linking finished\n"
 
-install: SectorOS_Kernel.bin
-	sudo cp $< /boot/SectorOS_Kernel.bin
+install: CelestiaOS_Kernel.bin
+	sudo cp $< /boot/CelestiaOS_Kernel.bin
 
-SectorOS.iso: SectorOS_Kernel.bin
+CelestiaOS.iso: CelestiaOS_Kernel.bin
 	@printf "\e[1;34m[3/3]Building ISO file $@\n\e[0m"
 	@mkdir -pv iso
 	@mkdir -pv iso/boot
@@ -83,8 +83,8 @@ SectorOS.iso: SectorOS_Kernel.bin
 	@echo 'set timeout=3' >> iso/boot/grub/grub.cfg
 	@echo 'set default=0' >> iso/boot/grub/grub.cfg
 	@echo '' >> iso/boot/grub/grub.cfg
-	@echo 'menuentry "SectorOS" { '>> iso/boot/grub/grub.cfg
-	@echo 'multiboot /boot/SectorOS_Kernel.bin' >> iso/boot/grub/grub.cfg
+	@echo 'menuentry "CelestiaOS" { '>> iso/boot/grub/grub.cfg
+	@echo 'multiboot /boot/CelestiaOS_Kernel.bin' >> iso/boot/grub/grub.cfg
 	@echo 'boot' >> iso/boot/grub/grub.cfg
 	@echo '}' >> iso/boot/grub/grub.cfg
 	@if [ $(GRUB) == "pt" ];then\
@@ -95,20 +95,20 @@ SectorOS.iso: SectorOS_Kernel.bin
 	@rm -rf iso
 	
 
-move: SectorOS.iso
+move: CelestiaOS.iso
 	@printf "\e[1;35mMoving $< to Build_files\n\e[0m"
 	@mkdir Build_files
-	@mv *.iso SectorOS_Kernel.bin Build_files/
+	@mv *.iso CelestiaOS_Kernel.bin Build_files/
 
-runQEMU: SectorOS.iso
-	qemu-system-i386 -boot d -cdrom SectorOS.iso -s -m 2048  &
+runQEMU: CelestiaOS.iso
+	qemu-system-i386 -boot d -cdrom CelestiaOS.iso -s -m 2048  &
 
-runVBOX: SectorOS.iso
+runVBOX: CelestiaOS.iso
 	@printf "Starting VirtualBox\n";
 	@(killall VirtualBoxVM && sleep 1) || true
-	VirtualBoxVM --startvm 'SectorOS' --dbg &
+	VirtualBoxVM --startvm 'CelestiaOS' --dbg &
 
-runBOCHS: SectorOS.iso
+runBOCHS: CelestiaOS.iso
 	@printf "Starting Bochs\n";
 	@(killall bochs && sleep 1) || true
 	$(BOCHS) -q -f bochsrc.txt &
@@ -119,4 +119,4 @@ stopVBOX:
 .PHONY: clean
 clean:
 	@printf "\e[1;31mCleaning the object files...\n\e[0m"
-	@rm -f $(objects) CPU/shutdown.o SectorOS_Kernel.bin SectorOS.iso
+	@rm -f $(objects) CPU/shutdown.o CelestiaOS_Kernel.bin CelestiaOS.iso

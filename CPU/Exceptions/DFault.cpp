@@ -32,7 +32,6 @@ uint32_t EXECPTION_DOUBLE_FAULT::HandleInterrupt(uint32_t esp)
     CPUState* CSTATE = (CPUState*)esp;
     printf("\5");
     printf("A Kernel Panic Occured. HALTING...                 \nSYSMSG_EXCEPTION:  Double Fault\n\n");
-    printf("A double fault has occured in the system during execution. Double fault occures when the os cannot handle the previous exeption or an exeption occured when cpu tried to call the execption handler. Restarting may solve the problem. If this happens again, Report it on github.com/Arun007coder/SectorOS/issues \n\n");
     printf("Extended stack pointer = 0x");
     printHex32(esp);
     printf("\nExtended instruction pointer  = 0x");

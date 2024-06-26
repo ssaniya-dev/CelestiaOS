@@ -13,9 +13,9 @@
 
 #include "../kernel/MultiTask.h"
 
-inline char *OS_NAME = "SectorOS";
+inline char *OS_NAME = "CelestiaOS";
 
-inline char *KERNEL_NAME = "SectorOS";
+inline char *KERNEL_NAME = "CelestiaOS";
 inline char *KERNEL_VERSION = "V3.5.5";
 inline char *KERNEL_BUILD = "Build: 2022-03-28";
 inline char *KERNEL_ARCH = "x86";

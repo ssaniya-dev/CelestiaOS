@@ -30,7 +30,7 @@ call get_input ;; To get input from the keyboard
 %include 'fetch_str.asm'
 %include 'Shutdown.asm'
 
-Text: db 'Welcome to SectorOS primitive kernel', 0x0A, 0x0D, 0
+Text: db 'Welcome to CelestiaOS primitive kernel', 0x0A, 0x0D, 0
 Text2: db 'Basic keyboard input is working', 0x0A, 0x0D, 0
 Text3: db 'Trying to read second sector of the Drive' , 0x0A, 0x0D, 0
 Text4: db 'Basic sector reading is working', 0x0A, 0x0D, 0

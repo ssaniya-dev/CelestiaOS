@@ -1622,7 +1622,7 @@ void printf(char *str)
             x = 0;
             y = 0;
             // ColourPrint(0);
-            printf("SectorOS ");
+            printf("CelestiaOS");
             printf(KERNEL_VERSION);
             printf("               ");
             RTC rtclock;
@@ -1632,7 +1632,6 @@ void printf(char *str)
             printf(INTTOCHARPOINT(rtclock.month));
             printf("/");
             printf(INTTOCHARPOINT(rtclock.year));
-            printf("                            Type: Shell\n");
             for (int i = 0; i != 80; i++)
                 VideoMemory[80 * 1 + i] = (VideoMemory[80 * 1 + i] & 0xFF00) | foo[i];
             printf("\n");
@@ -2027,14 +2026,14 @@ void *kcalloc(uint32_t num, uint32_t size)
 
 void taskB()
 {
-    printf("SectorOS TASK2\nPlese restart the os manually\n");
+    printf("CelestiaOS TASK2\nPlese restart the os manually\n");
     while (1)
         ;
 }
 
 void taskA()
 {
-    printf("SectorOS TASK1\nPlese restart the os manually\n");
+    printf("CelestiaOS TASK1\nPlese restart the os manually\n");
     while (1)
         ;
 }
@@ -2079,8 +2078,6 @@ public:
 
         if (size > 9 && data[0] == 'G' && data[1] == 'E' && data[2] == 'T' && data[3] == ' ' && data[4] == '/' && data[5] == ' ' && data[6] == 'H' && data[7] == 'T' && data[8] == 'T' && data[9] == 'P')
         {
-            printf("SYSMSG: Sending response\n");
-            socket->Send((uint8_t *)"HTTP/1.1 200 OK\r\nServer: SectorOS\r\nContent-Type: text/html\r\n\r\n<html><head><title>SectorOS</title></head><body><b>This is a test webpage which is hosted on SectorOS</b> https://github.com/Arun007coder/SectorOS</body></html>\r\n", 224);
             socket->Disconnect();
         }
         return true;
@@ -2092,7 +2089,6 @@ void StartWEBServer(uint16_t port)
     if (DriverManager::ActiveDriverManager->GetDriver(UDID_AM79C973) != 0)
     {
         printf("\5\n");
-        printf("SectorOS Web Server v1.0\n");
         AM79C973 *eth0 = (AM79C973 *)DriverManager::ActiveDriverManager->GetDriver(UDID_AM79C973);
         InternetProtocolProvider *ipv4 = InternetProtocolProvider::ActiveInstance;
         TransmissionControlProtocolProvider tcp(ipv4);
@@ -2126,7 +2122,7 @@ extern "C" void callConstructors()
 extern "C" void kernelMain(const void *multiboot_structure, uint32_t multiboot_m)
 {
     ColourPrint(0);
-    printf("Initializing SectorOS Kernel ");
+    printf("Initializing CelestiaOS Kernel ");
     printf(KERNEL_VERSION);
     printf(" ");
     printf(KERNEL_BUILD);
@@ -2290,12 +2286,9 @@ extern "C" void kernelMain(const void *multiboot_structure, uint32_t multiboot_m
 
     printf("\5");
     printf("\5");
-
-    printf("Welcome to SectorOS ");
     printf(KERNEL_VERSION);
     printf("          ");
     PrintDate();
-    printf("                      Type: Shell\nhttps://github.com/Arun007coder/SectorOS \n");
 
     /*
     printf("Initializing ");
@@ -2304,8 +2297,6 @@ extern "C" void kernelMain(const void *multiboot_structure, uint32_t multiboot_m
     printf(SHELL_VER);
     printf("\n\n");
     */
-
-    printf("Welcome to SectorOS Shell\nRun help to get the list of commands which is implemented \n \n");
     printf(" @@@@@@@@@@@@@@\n");
     printf("@              \n");
     printf("@              \n");

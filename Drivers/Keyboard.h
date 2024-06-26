@@ -31,7 +31,6 @@ class KeyboardDriver : public InterruptHandler, public Driver // Driver for keyb
     port8BIT DataPort;
     port8BIT CommandPort;
 
-    // SOSH v1.0.3 [SectorOS SHell]
     // To interpret and execute the command
     void CommandInterpreter();
     SerialPort serialport;
