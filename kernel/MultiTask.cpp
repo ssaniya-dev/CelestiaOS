@@ -27,20 +27,8 @@ Task::Task(GlobalDescriptorTable *gdt, void entrypoint(), uint8_t* name, int id)
     cpustate -> esi = 0;
     cpustate -> edi = 0;
     cpustate -> ebp = 0;
-
-    /*
-    cpustate -> gs = 0;
-    cpustate -> fs = 0;
-    cpustate -> es = 0;
-    cpustate -> ds = 0;
-    */
-
-    // cpustate -> error = 0;    
-
-    // cpustate -> esp = ;
     cpustate -> eip = (uint32_t)entrypoint;
     cpustate -> cs = gdt->CodeSegmentSelector();
-    // cpustate -> ss = ;
     cpustate -> eflags = 0x202;
 }
 

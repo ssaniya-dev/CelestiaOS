@@ -57,7 +57,6 @@ public:
         uint8_t FetchByte(uint32_t &ClockCycles, Memory &mem);                 // To fetch a byte of data from the memory with a cost of a clock cycle
         uint8_t ReadByte(uint32_t &ClockCycles, uint8_t Address, Memory &mem); // To fetch a byte of data from the memory without increasing the program counter   // To fetch a byte of data from the FLP
 
-        /*### START INSTRUCTION SET ###*/
         static constexpr uint8_t // 4 Instructions and 18 opcodes
             // Move Instruction starts from 0x30
             INS_MV = 0x30, // CC 4 3 byte
@@ -88,10 +87,6 @@ public:
             // Debugging mode is used for debugging purposes. In this mode the instructions and it's opcode along with the register data and program counter [memory address] will be printed on to the console
             INS_SDE = 0x67, // Starts debugging
             INS_NDE = 0x66; // Stops debugging
-
-        /*### END INSTRUCTION SET ###*/
-
-        /*### START INTERRUPT REQUEST TABLE ###*/
         static constexpr uint8_t // 4 Interrupt requests
             INT_PC = 0x10,       // Print character which is stored in Y register
             INT_SRP = 0x11,      // Print status register to the console

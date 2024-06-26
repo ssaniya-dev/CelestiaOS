@@ -93,17 +93,13 @@ void *list_remove_back(list_t *list)
     return val;
 }
 
-/*
- * Insert after tail of list(same as insert back)
- * */
+
 void list_push(list_t *list, void *val)
 {
     list_insert_back(list, val);
 }
 
-/*
- * Remove and return tail of list(user is responsible for freeing the returned node and the value)
- * */
+
 listnode_t *list_pop(list_t *list)
 {
     if (!list->head)
@@ -116,25 +112,16 @@ listnode_t *list_pop(list_t *list)
     return t;
 }
 
-/*
- * Insert before head of list(same as insert front)
- * */
 void list_enqueue(list_t *list, void *val)
 {
     list_insert_front(list, val);
 }
 
-/*
- * Remove and return tail of list(same as list_pop
- * */
 listnode_t *list_dequeue(list_t *list)
 {
     return list_pop(list);
 }
 
-/*
- * Get the value of the first element but not remove it
- * */
 void *list_peek_front(list_t *list)
 {
     if (!list->head)
@@ -142,20 +129,12 @@ void *list_peek_front(list_t *list)
     return list->head->val;
 }
 
-/*
- * Get the value of the last element but not remove it
- * */
 void *list_peek_back(list_t *list)
 {
     if (!list->tail)
         return NULL;
     return list->tail->val;
 }
-
-/*
- * Does the list contain a value
- * Return -1 if list element is not found
- * */
 
 int list_contain(list_t *list, void *val)
 {

@@ -3,19 +3,6 @@
 void printf(char *);
 void printHex(uint8_t);
 
-/*
-DOUBLE FAULT
-
-A Double Fault occurs when an exception is unhandled or when an exception occurs while the CPU is trying to call an exception handler. Normally, two exception at the same time are handled one after another, but in some cases that is not possible. For example, if a page fault occurs, but the exception handler is located in a not-present page, two page faults would occur and neither can be handled. A double fault would occur.
-A double fault will always generate an error code with a value of zero.
-
-The saved instruction pointer is undefined. A double fault cannot be recovered. The faulting process must be terminated.
-
-In several starting hobby OSes, a double fault is also quite often a misdiagnosed IRQ0 in the cases where the PIC hasn't been reprogrammed yet.
-
-Source: https://wiki.osdev.org/Double_Fault
-*/
-
 EXECPTION_DOUBLE_FAULT::EXECPTION_DOUBLE_FAULT(InterruptManager* interruptManager)
     : InterruptHandler(0x08, interruptManager)
 {

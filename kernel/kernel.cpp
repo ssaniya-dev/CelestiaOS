@@ -2289,14 +2289,6 @@ extern "C" void kernelMain(const void *multiboot_structure, uint32_t multiboot_m
     printf(KERNEL_VERSION);
     printf("          ");
     PrintDate();
-
-    /*
-    printf("Initializing ");
-    printf(SHELL_NAME);
-    printf(" ");
-    printf(SHELL_VER);
-    printf("\n\n");
-    */
     printf(" @@@@@@@@@@@@@@\n");
     printf("@              \n");
     printf("@              \n");

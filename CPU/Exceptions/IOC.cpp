@@ -3,20 +3,6 @@
 void printf(char *);
 void printHex(uint8_t);
 
-/*
-
-INVALID OPCODE
-
-The Invalid Opcode exception occurs when the processor tries to execute an invalid or undefined opcode, or an instruction with invalid prefixes. It also occurs in other cases, such as:
-
-* The instruction length exceeds 15 bytes, but this only occurs with redundant prefixes.
-* The instruction tries to access a non-existent control register (for example, mov cr6, eax).
-* The UD instruction is executed.
-
-The saved instruction pointer points to the instruction which caused the exception.
-
-*/
-
 EXCEPTIONS_IOC::EXCEPTIONS_IOC(InterruptManager* interruptManager)
     : InterruptHandler(0x06, interruptManager)
 {

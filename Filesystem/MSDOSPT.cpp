@@ -14,15 +14,6 @@ void MSDOSPartitionTable::ReadPartitions(AdvancedTechnologyAttachment *hd)
     hd->Read28(0, (uint8_t *)&mbr, sizeof(MasterBootRecord));
     MBR = &mbr;
 
-    /*
-    for(int i = 0x1BE; i <= 0x01FF; i++)
-    {
-        printfHex(((uint8_t*)&mbr)[i]);
-        printf(" ");
-    }
-    printf("\n");
-    */
-
     if (mbr.magicnumber != 0xAA55)
     {
         printf("illegal MBR");

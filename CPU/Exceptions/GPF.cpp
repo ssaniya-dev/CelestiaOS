@@ -3,22 +3,6 @@
 void printf(char *);
 void printHex(uint8_t);
 
-/*
-
-GENERAL PROTECTION FAULT
-
-A General Protection Fault may occur for various reasons. The most common are:
-
-* Segment error (privilege, type, limit, read/write rights).
-* Executing a privileged instruction while CPL != 0.
-* Writing a 1 in a reserved register field or writing invalid value combinations (e.g. CR0 with PE=0 and PG=1).
-* Referencing or accessing a null-descriptor.
-* The saved instruction pointer points to the instruction which caused the exception.
-
-Source: https://wiki.osdev.org/General_Protection_Fault
-
-*/
-
 EXCEPTIONS_GPF::EXCEPTIONS_GPF(InterruptManager* interruptManager)
     : InterruptHandler(0x0D, interruptManager)
 {

@@ -196,10 +196,6 @@ int atoi(char *string)
         string += 1;
     }
 
-    /*
-     * Check for a sign.
-     */
-
     if (*string == '-')
     {
         sign = 1;
@@ -298,9 +294,7 @@ list_t *str_split(const char *str, const char *delim, unsigned int *numtokens)
     kfree(s);
     return ret_list;
 }
-/*
- * Reconstruct the string with tokens and delimiters
- * */
+
 char *list2str(list_t *list, const char *delim)
 {
     char *ret = (char*)kmalloc(256);
